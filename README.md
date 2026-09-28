@@ -32,7 +32,7 @@ gx_check: 게시된 스냅샷을 GX 1.23 스위트 16항목으로 독립 감사
 | 100만 행에서 Python 행 단위 처리가 병목 | DuckDB 벡터화 엔진: 엄격한 조건을 통과한 행만 SQL로 변환, 나머지는 기존 검증 함수로 → 결과가 같음을 구조로 보장. HMAC도 SQL `sha256`으로 구현 | `test_sql_engine_matches_reference_python_engine`, `evidence/engine-benchmark.json` |
 
 성능(100만 행, 한 PC 측정): 전체 배치 **53.1초 → 22.0초**, 결과 해시 동일.
-읽기·검증·토큰 구간은 약 40초 → 2.6초. 남은 시간은 두 엔진 공통인 디스크 커밋·기본키 인덱스·감사 해시입니다(`evidence/engine-breakdown.log`).
+읽기·검증·토큰 구간은 약 37초 → 약 3초(쿼리별 측정 로그에서 계산). 남은 시간은 두 엔진 공통인 디스크 커밋·기본키 인덱스·감사 해시입니다(`evidence/engine-breakdown.log`).
 
 ## 실행
 
