@@ -1,0 +1,37 @@
+﻿# Paths are relative to the working directory (one batch folder: raw/ in, landing/ out).
+# Ingestion only: enforce header/column count and land the file as UTF-8 LF CSV.
+# All columns stay strings; the input contract (dates, units, ids) is enforced once, in clinical_pipeline.normalize.
+# One output task: sequence_format drops the task index, so parallel output tasks would overwrite each other
+# (caught by embulk_compare.py: 884 of 10,008 rows survived before this setting).
+exec:
+  min_output_tasks: 1
+in:
+  type: file
+  path_prefix: raw/hospital_B.csv
+  parser:
+    type: csv
+    charset: UTF-8
+    newline: CRLF
+    skip_header_lines: 1
+    allow_extra_columns: false
+    allow_optional_columns: false
+    stop_on_invalid_record: true
+    columns:
+      - {name: patient_id, type: string}
+      - {name: birth_year, type: string}
+      - {name: visit_id, type: string}
+      - {name: visit_date, type: string}
+      - {name: measurement_id, type: string}
+      - {name: measurement_date, type: string}
+      - {name: test_code, type: string}
+      - {name: value, type: string}
+      - {name: unit, type: string}
+out:
+  type: file
+  path_prefix: landing/hospital_B
+  sequence_format: "."
+  file_ext: csv
+  formatter:
+    type: csv
+    header_line: true
+    newline: LF

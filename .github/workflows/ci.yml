@@ -1,0 +1,49 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+env:
+  GX_ANALYTICS_ENABLED: "false"
+  TQDM_DISABLE: "1"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -q
+
+  docker-integration:
+    # Linux runtime check: container tests, Embulk vs direct path, Airflow and Digdag scenarios.
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Container tests
+        run: docker compose run --build --rm tests
+      - name: Embulk ingestion matches direct input
+        run: python embulk_compare.py --rows 5000 --output /tmp/embulk-compare.json
+      - name: Airflow 3 DAG scenarios
+        run: |
+          docker build -t clinical-airflow -f airflow/Dockerfile .
+          docker run --rm --network none --tmpfs /opt/airflow/clinical-data:uid=50000 clinical-airflow \
+            bash /opt/airflow/verify.sh | tee /tmp/airflow.log
+          grep -q "SOURCE_ROW_COUNT_MISMATCH" /tmp/airflow.log
+          test "$(grep -c 'DagRun Finished.*state=success' /tmp/airflow.log)" -eq 3
+          test "$(grep -c 'DagRun Finished.*state=failed' /tmp/airflow.log)" -eq 1
+      - name: Digdag + Embulk workflow scenarios
+        run: |
+          docker build -t clinical-digdag -f digdag/Dockerfile .
+          docker run --rm --network none --tmpfs /data:uid=10001 clinical-digdag bash verify.sh | tee /tmp/digdag.log
+          test "$(grep -c '^Success' /tmp/digdag.log)" -eq 3
+          grep -q '^ALERT clinical_daily 2026-09-26' /tmp/digdag.log

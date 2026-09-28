@@ -1,0 +1,65 @@
+﻿
+docker : [2m2026-09-28T14:53:58.360295Z[0m [[32m[1minfo     [0m] [1mContext impl SQLiteImpl.      [0m [[0m[1m
+[34malembic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:211[0m
+At line:7 char:73
++ ... | Out-Null; docker run --rm --network none --tmpfs /opt/airflow/clini ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([2m2026-09-28T...tion.py:211[0m:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[2m2026-09-28T14:53:58.360477Z[0m [[32m[1minfo     [0m] [1mWill assume non-transactional DDL.[0m [[0m[1m[34ma
+lembic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:214[0m
+[2m2026-09-28T14:53:58.361288Z[0m [[32m[1minfo     [0m] [1mContext impl SQLiteImpl.      [0m [[0m[1m[34malemb
+ic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:211[0m
+[2m2026-09-28T14:53:58.361392Z[0m [[32m[1minfo     [0m] [1mWill assume non-transactional DDL.[0m [[0m[1m[34ma
+lembic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:214[0m
+[2m2026-09-28T14:53:58.361636Z[0m [[32m[1minfo     [0m] [1mCreating Airflow database tables from the ORM[0m [[0
+m[1m[34mairflow.utils.db[0m][0m [36mloc[0m=[35mdb.py:684[0m
+[2m2026-09-28T14:53:58.361770Z[0m [[32m[1minfo     [0m] [1mCreating context              [0m [[0m[1m[34mairfl
+ow.utils.db[0m][0m [36mloc[0m=[35mdb.py:689[0m
+[2m2026-09-28T14:53:58.362059Z[0m [[32m[1minfo     [0m] [1mBinding engine                [0m [[0m[1m[34mairfl
+ow.utils.db[0m][0m [36mloc[0m=[35mdb.py:691[0m
+[2m2026-09-28T14:53:58.362167Z[0m [[32m[1minfo     [0m] [1mPool status: NullPool         [0m [[0m[1m[34mairfl
+ow.utils.db[0m][0m [36mloc[0m=[35mdb.py:693[0m
+[2m2026-09-28T14:53:58.362264Z[0m [[32m[1minfo     [0m] [1mCreating metadata             [0m [[0m[1m[34mairfl
+ow.utils.db[0m][0m [36mloc[0m=[35mdb.py:695[0m
+[2m2026-09-28T14:53:58.918640Z[0m [[32m[1minfo     [0m] [1mGetting alembic config        [0m [[0m[1m[34mairfl
+ow.utils.db[0m][0m [36mloc[0m=[35mdb.py:698[0m
+[2m2026-09-28T14:53:58.919554Z[0m [[32m[1minfo     [0m] [1mStamping migration head       [0m [[0m[1m[34mairfl
+ow.utils.db[0m][0m [36mloc[0m=[35mdb.py:705[0m
+[2m2026-09-28T14:53:58.925995Z[0m [[32m[1minfo     [0m] [1mContext impl SQLiteImpl.      [0m [[0m[1m[34malemb
+ic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:211[0m
+[2m2026-09-28T14:53:58.926214Z[0m [[32m[1minfo     [0m] [1mWill assume non-transactional DDL.[0m [[0m[1m[34ma
+lembic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:214[0m
+[2m2026-09-28T14:53:58.999199Z[0m [[32m[1minfo     [0m] [1mRunning stamp_revision  -> cc92b33c6709[0m [[0m[1m
+[34malembic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:622[0m
+[2m2026-09-28T14:53:59.005038Z[0m [[32m[1minfo     [0m] [1mAirflow database tables created[0m [[0m[1m[34mairf
+low.utils.db[0m][0m [36mloc[0m=[35mdb.py:708[0m
+== import errors
+No data found
+== dags test logical=2026-09-26
+[2m2026-09-28T14:54:15.337891Z[0m [[32m[1minfo     [0m] [1mDone. Returned value was: {'batch_date': '2026-09-25', 'success': True, 'measurement_snapshot': {'evaluated': 13, 'passed': 13}, 'patient_snapshot': {'evaluated': 3, 'passed': 3}}[0m [[0m[1m[34mairflow.task.operators.airflow.providers.standard.decorators.python._PythonDecoratedOperator[0m][0m [36mloc[0m=[35mpython.py:218[0m
+[2m2026-09-28T14:54:15.338111Z[0m [[32m[1minfo     [0m] [1mPushing xcom                  [0m [[0m[1m[34mtask[0m][0m [36mloc[0m=[35mtask_runner.py:1352[0m [36mti[0m=[35mRuntimeTaskInstance(id=UUID('01a0e882-3f77-7153-9830-2d43c73465f2'), task_id='gx_audit', dag_id='clinical_daily_snapshot', run_id='manual__2026-09-28T14:54:05.160821+00:00', try_number=1, dag_version_id=UUID('01a0e882-3f39-7dfd-9a6e-2c2e62bd54a2'), map_index=-1, hostname='f5a098a2a571', context_carrier=None, task=<Task(_PythonDecoratedOperator): gx_audit>, max_tries=2, start_date=datetime.datetime(2026, 9, 28, 14, 54, 9, 915980, tzinfo=datetime.timezone.utc), end_date=None, state=<TaskInstanceState.RUNNING: 'running'>, is_mapped=False, rendered_map_index=None)[0m
+[2m2026-09-28T14:54:15.377387Z[0m [[32m[1minfo     [0m] [1mTask instance state updated   [0m [[0m[1m[34mairflow.api_fastapi.execution_api.routes.task_instances[0m][0m [36mloc[0m=[35mtask_instances.py:409[0m [36mnew_state[0m=[35msuccess[0m [36mrows_affected[0m=[35m1[0m [36mti_id[0m=[35m01a0e882-3f77-7153-9830-2d43c73465f2[0m
+[2m2026-09-28T14:54:15.411594Z[0m [[32m[1minfo     [0m] [1mMarking run <DagRun clinical_daily_snapshot @ 2026-09-26 00:00:00+00:00: manual__2026-09-28T14:54:05.160821+00:00, state:running, queued_at: None. run_type: manual> successful[0m [[0m[1m[34mairflow.models.dagrun.DagRun[0m][0m [36mloc[0m=[35mdagrun.py:1204[0m
+[2m2026-09-28T14:54:15.411761Z[0m [[32m[1minfo     [0m] [1mDagRun Finished: dag_id=clinical_daily_snapshot, logical_date=2026-09-26 00:00:00+00:00, run_id=manual__2026-09-28T14:54:05.160821+00:00, run_start_date=2026-09-26 00:00:00+00:00, run_end_date=2026-09-28 14:54:15.411695+00:00, run_duration=226455.411695, state=success, run_type=manual, data_interval_start=2026-09-25 00:00:00+00:00, data_interval_end=2026-09-26 00:00:00+00:00,[0m [[0m[1m[34mairflow.models.dagrun.DagRun[0m][0m [36mloc[0m=[35mdagrun.py:1274[0m
+== dags test logical=2026-09-27
+[2m2026-09-28T14:54:24.478907Z[0m [[32m[1minfo     [0m] [1mDone. Returned value was: {'batch_date': '2026-09-26', 'success': True, 'measurement_snapshot': {'evaluated': 13, 'passed': 13}, 'patient_snapshot': {'evaluated': 3, 'passed': 3}}[0m [[0m[1m[34mairflow.task.operators.airflow.providers.standard.decorators.python._PythonDecoratedOperator[0m][0m [36mloc[0m=[35mpython.py:218[0m
+[2m2026-09-28T14:54:24.479117Z[0m [[32m[1minfo     [0m] [1mPushing xcom                  [0m [[0m[1m[34mtask[0m][0m [36mloc[0m=[35mtask_runner.py:1352[0m [36mti[0m=[35mRuntimeTaskInstance(id=UUID('01a0e882-7471-73d4-a311-1cf4263fe595'), task_id='gx_audit', dag_id='clinical_daily_snapshot', run_id='manual__2026-09-28T14:54:18.722595+00:00', try_number=1, dag_version_id=UUID('01a0e882-3f39-7dfd-9a6e-2c2e62bd54a2'), map_index=-1, hostname='f5a098a2a571', context_carrier=None, task=<Task(_PythonDecoratedOperator): gx_audit>, max_tries=2, start_date=datetime.datetime(2026, 9, 28, 14, 54, 21, 635050, tzinfo=datetime.timezone.utc), end_date=None, state=<TaskInstanceState.RUNNING: 'running'>, is_mapped=False, rendered_map_index=None)[0m
+[2m2026-09-28T14:54:24.514848Z[0m [[32m[1minfo     [0m] [1mTask instance state updated   [0m [[0m[1m[34mairflow.api_fastapi.execution_api.routes.task_instances[0m][0m [36mloc[0m=[35mtask_instances.py:409[0m [36mnew_state[0m=[35msuccess[0m [36mrows_affected[0m=[35m1[0m [36mti_id[0m=[35m01a0e882-7471-73d4-a311-1cf4263fe595[0m
+[2m2026-09-28T14:54:24.550718Z[0m [[32m[1minfo     [0m] [1mMarking run <DagRun clinical_daily_snapshot @ 2026-09-27 00:00:00+00:00: manual__2026-09-28T14:54:18.722595+00:00, state:running, queued_at: None. run_type: manual> successful[0m [[0m[1m[34mairflow.models.dagrun.DagRun[0m][0m [36mloc[0m=[35mdagrun.py:1204[0m
+[2m2026-09-28T14:54:24.550939Z[0m [[32m[1minfo     [0m] [1mDagRun Finished: dag_id=clinical_daily_snapshot, logical_date=2026-09-27 00:00:00+00:00, run_id=manual__2026-09-28T14:54:18.722595+00:00, run_start_date=2026-09-27 00:00:00+00:00, run_end_date=2026-09-28 14:54:24.550865+00:00, run_duration=140064.550865, state=success, run_type=manual, data_interval_start=2026-09-26 00:00:00+00:00, data_interval_end=2026-09-27 00:00:00+00:00,[0m [[0m[1m[34mairflow.models.dagrun.DagRun[0m][0m [36mloc[0m=[35mdagrun.py:1274[0m
+== dags test logical=2026-09-26
+[2m2026-09-28T14:54:33.507821Z[0m [[32m[1minfo     [0m] [1mDone. Returned value was: {'batch_date': '2026-09-25', 'success': True, 'measurement_snapshot': {'evaluated': 13, 'passed': 13}, 'patient_snapshot': {'evaluated': 3, 'passed': 3}}[0m [[0m[1m[34mairflow.task.operators.airflow.providers.standard.decorators.python._PythonDecoratedOperator[0m][0m [36mloc[0m=[35mpython.py:218[0m
+[2m2026-09-28T14:54:33.508061Z[0m [[32m[1minfo     [0m] [1mPushing xcom                  [0m [[0m[1m[34mtask[0m][0m [36mloc[0m=[35mtask_runner.py:1352[0m [36mti[0m=[35mRuntimeTaskInstance(id=UUID('01a0e882-9833-7333-8ebd-9fa93b4194ee'), task_id='gx_audit', dag_id='clinical_daily_snapshot', run_id='manual__2026-09-28T14:54:27.851038+00:00', try_number=1, dag_version_id=UUID('01a0e882-3f39-7dfd-9a6e-2c2e62bd54a2'), map_index=-1, hostname='f5a098a2a571', context_carrier=None, task=<Task(_PythonDecoratedOperator): gx_audit>, max_tries=2, start_date=datetime.datetime(2026, 9, 28, 14, 54, 30, 733622, tzinfo=datetime.timezone.utc), end_date=None, state=<TaskInstanceState.RUNNING: 'running'>, is_mapped=False, rendered_map_index=None)[0m
+[2m2026-09-28T14:54:33.544398Z[0m [[32m[1minfo     [0m] [1mTask instance state updated   [0m [[0m[1m[34mairflow.api_fastapi.execution_api.routes.task_instances[0m][0m [36mloc[0m=[35mtask_instances.py:409[0m [36mnew_state[0m=[35msuccess[0m [36mrows_affected[0m=[35m1[0m [36mti_id[0m=[35m01a0e882-9833-7333-8ebd-9fa93b4194ee[0m
+[2m2026-09-28T14:54:33.578438Z[0m [[32m[1minfo     [0m] [1mMarking run <DagRun clinical_daily_snapshot @ 2026-09-26 00:00:00+00:00: manual__2026-09-28T14:54:27.851038+00:00, state:running, queued_at: None. run_type: manual> successful[0m [[0m[1m[34mairflow.models.dagrun.DagRun[0m][0m [36mloc[0m=[35mdagrun.py:1204[0m
+[2m2026-09-28T14:54:33.578603Z[0m [[32m[1minfo     [0m] [1mDagRun Finished: dag_id=clinical_daily_snapshot, logical_date=2026-09-26 00:00:00+00:00, run_id=manual__2026-09-28T14:54:27.851038+00:00, run_start_date=2026-09-26 00:00:00+00:00, run_end_date=2026-09-28 14:54:33.578540+00:00, run_duration=226473.57854, state=success, run_type=manual, data_interval_start=2026-09-25 00:00:00+00:00, data_interval_end=2026-09-26 00:00:00+00:00,[0m [[0m[1m[34mairflow.models.dagrun.DagRun[0m][0m [36mloc[0m=[35mdagrun.py:1274[0m
+== truncate 9/26 hospital_B without updating its control file
+[2m2026-09-28T14:54:38.465321Z[0m [[32m[1minfo     [0m] [1mPushing xcom                  [0m [[0m[1m[34mtask[0m][0m [36mloc[0m=[35mtask_runner.py:1352[0m [36mti[0m=[35mRuntimeTaskInstance(id=UUID('01a0e882-bba0-7968-a4b3-62e47be71edb'), task_id='inspect_source', dag_id='clinical_daily_snapshot', run_id='manual__2026-09-28T14:54:36.913263+00:00', try_number=1, dag_version_id=UUID('01a0e882-3f39-7dfd-9a6e-2c2e62bd54a2'), map_index=-1, hostname='f5a098a2a571', context_carrier=None, task=<Task(_PythonDecoratedOperator): inspect_source>, max_tries=2, start_date=datetime.datetime(2026, 9, 28, 14, 54, 37, 252969, tzinfo=datetime.timezone.utc), end_date=None, state=<TaskInstanceState.RUNNING: 'running'>, is_mapped=False, rendered_map_index=None)[0m
+    raise AirflowFailException(str(exc)) from None
+airflow.exceptions.AirflowFailException: SOURCE_ROW_COUNT_MISMATCH
+[2m2026-09-28T14:54:39.672506Z[0m [[32m[1minfo     [0m] [1mMarking run <DagRun clinical_daily_snapshot @ 2026-09-27 00:00:00+00:00: manual__2026-09-28T14:54:36.913263+00:00, state:running, queued_at: None. run_type: manual> failed[0m [[0m[1m[34mairflow.models.dagrun.DagRun[0m][0m [36mloc[0m=[35mdagrun.py:1171[0m
+[2m2026-09-28T14:54:39.672679Z[0m [[32m[1minfo     [0m] [1mDagRun Finished: dag_id=clinical_daily_snapshot, logical_date=2026-09-27 00:00:00+00:00, run_id=manual__2026-09-28T14:54:36.913263+00:00, run_start_date=2026-09-27 00:00:00+00:00, run_end_date=2026-09-28 14:54:39.672618+00:00, run_duration=140079.672618, state=failed, run_type=manual, data_interval_start=2026-09-26 00:00:00+00:00, data_interval_end=2026-09-27 00:00:00+00:00,[0m [[0m[1m[34mairflow.models.dagrun.DagRun[0m][0m [36mloc[0m=[35mdagrun.py:1274[0m
+== pipeline runs table (batch_date, status, error_code, snapshot_sha256)
+[["2026-09-25", "COMMITTED", null, "f54c6426528fd46ed099fe5563cb25d88fed540963ada97dbaad647aff6b683d"], ["2026-09-26", "COMMITTED", null, "f8100a4887214324b3e49313992f134125b8e95dfb61adff041d9fbe2eeb21ef"], ["2026-09-25", "COMMITTED", null, "f54c6426528fd46ed099fe5563cb25d88fed540963ada97dbaad647aff6b683d"], ["2026-09-26", "FAILED", "SOURCE_ROW_COUNT_MISMATCH", null]]

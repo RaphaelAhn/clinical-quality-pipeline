@@ -1,0 +1,26 @@
+﻿# Daily clinical snapshot: Embulk ingestion (per hospital, parallel) -> validate & publish -> GX audit.
+# Batch folder /data/${session_date}/: raw/ (sender files + .rows control), landing/ (Embulk output).
+timezone: UTC
+
+schedule:
+  daily>: 01:00:00
+
+_export:
+  batch: /data/${session_date}
+
++ingest:
+  _parallel: true
+  +hospital_A:
+    sh>: cd ${batch} && mkdir -p landing && java -jar /opt/embulk.jar run /opt/configs/hospital_A.yml && cp raw/hospital_A.rows landing/
+  +hospital_B:
+    sh>: cd ${batch} && mkdir -p landing && java -jar /opt/embulk.jar run /opt/configs/hospital_B.yml && cp raw/hospital_B.rows landing/
+
++publish:
+  # Quality failures exit non-zero; the whole day is replaced in one DuckDB transaction or not at all.
+  sh>: python -m clinical_pipeline run --folder ${batch}/landing --database /data/clinical.duckdb --date ${session_date}
+
++audit:
+  sh>: python -m gx_check --database /data/clinical.duckdb --date ${session_date}
+
+_error:
+  sh>: echo "ALERT clinical_daily ${session_date} failed - ${error.message}" >> /data/alerts.log

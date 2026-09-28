@@ -1,0 +1,70 @@
+﻿docker :  Image clinical-quality-pipeline-tests Building 
+At line:5 char:1
++ docker compose run --build --rm tests 2>&1 | Out-File -Encoding utf8  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( Image clinical...tests Building :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+#1 [internal] load local bake definitions
+#1 reading from stdin 591B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 545B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 ...
+
+#4 [auth] library/python:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 1.3s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [1/6] FROM docker.io/library/python:3.12-slim@sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f
+#6 resolve docker.io/library/python:3.12-slim@sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f 0.0s done
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 39.44kB 0.0s done
+#7 DONE 0.0s
+
+#8 [2/6] WORKDIR /app
+#8 CACHED
+
+#9 [3/6] COPY requirements.txt ./
+#9 CACHED
+
+#10 [4/6] RUN pip install --no-cache-dir -r requirements.txt
+#10 CACHED
+
+#11 [5/6] COPY clinical_pipeline.py gx_check.py demo.py test_pipeline.py test_gx.py ./
+#11 DONE 0.1s
+
+#12 [6/6] RUN useradd --create-home --uid 10001 runner && mkdir -p /app/evidence /app/data && chown -R runner:runner /app
+#12 DONE 0.4s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 0.3s done
+#13 exporting manifest sha256:44e9305cc2ffc61c8968cbd7d3bb0558618e23f19b56cbfd8570cda05045119d 0.0s done
+#13 exporting config sha256:b6bee76afcc13f449429c2977718782df7a83e461aa3e09856da950efb699320 0.0s done
+#13 exporting attestation manifest sha256:d8bbff2bb7fe6ed9d8be5395b44cd4f572ff43573f298ac33f40a3d518b8a6da 0.0s done
+#13 exporting manifest list sha256:c3906e0e96d83224646c541130b365e037a84e8a068c4175e7544dd60c099171
+#13 exporting manifest list sha256:c3906e0e96d83224646c541130b365e037a84e8a068c4175e7544dd60c099171 0.0s done
+#13 naming to docker.io/library/clinical-quality-pipeline-tests:latest done
+#13 unpacking to docker.io/library/clinical-quality-pipeline-tests:latest 0.1s done
+#13 DONE 0.5s
+
+#14 resolving provenance for metadata file
+#14 DONE 0.0s
+ Image clinical-quality-pipeline-tests Built 
+ Container clinical-quality-pipeline-tests-run-3a411d9ad12f Creating 
+ Container clinical-quality-pipeline-tests-run-3a411d9ad12f Created 
+................................................                         [100%]
+48 passed in 8.95s

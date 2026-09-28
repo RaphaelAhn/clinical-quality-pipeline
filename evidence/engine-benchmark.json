@@ -1,0 +1,21 @@
+{
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "duckdb": "1.4.4"
+  },
+  "scope": "Synthetic data, local disk, whole run_batch incl. transactional publish",
+  "input_rows": 1000008,
+  "python_engine_seconds": 53.13,
+  "sql_engine_seconds_median": 21.96,
+  "sql_engine_runs": [
+    19.4,
+    21.96,
+    22.14
+  ],
+  "speedup": 2.4,
+  "python_rows_per_second": 18821,
+  "sql_rows_per_second": 45546,
+  "same_snapshot_sha256": true,
+  "same_counts_and_quarantine": true
+}

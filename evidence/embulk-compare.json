@@ -1,0 +1,52 @@
+{
+  "scope": "Synthetic data; Embulk 0.11.5 in Docker (network none) lands raw CSV; same run_batch on both paths",
+  "rows_per_hospital": 5000,
+  "manifest": {
+    "synthetic_only": true,
+    "batch_date": "2026-09-25",
+    "expected_unique": 10000,
+    "expected_duplicates": 2,
+    "expected_rejected": 6
+  },
+  "raw_bytes_differ": true,
+  "direct": {
+    "input_rows": 10008,
+    "accepted_rows": 10000,
+    "duplicate_rows": 2,
+    "rejected_rows": 6,
+    "reject_reasons": {
+      "MISSING_FIELD": 2,
+      "INVALID_DATE": 2,
+      "UNKNOWN_UNIT": 2
+    },
+    "counts": {
+      "patient_snapshot": 5000,
+      "visit_snapshot": 10000,
+      "measurement_snapshot": 10000
+    },
+    "snapshot_sha256": "50b3bf6a5181e42437bece3f0b88483bccb032b462304c0a6ddcfe46ac2c1de5"
+  },
+  "via_embulk": {
+    "input_rows": 10008,
+    "accepted_rows": 10000,
+    "duplicate_rows": 2,
+    "rejected_rows": 6,
+    "reject_reasons": {
+      "MISSING_FIELD": 2,
+      "INVALID_DATE": 2,
+      "UNKNOWN_UNIT": 2
+    },
+    "counts": {
+      "patient_snapshot": 5000,
+      "visit_snapshot": 10000,
+      "measurement_snapshot": 10000
+    },
+    "snapshot_sha256": "50b3bf6a5181e42437bece3f0b88483bccb032b462304c0a6ddcfe46ac2c1de5"
+  },
+  "snapshot_identical": true,
+  "embulk_seconds_per_hospital": {
+    "A": 1.88,
+    "B": 1.67
+  },
+  "gx_audit_via_embulk": true
+}

@@ -1,0 +1,25 @@
+{
+  "rows": 1000,
+  "repeats": 3,
+  "duckdb": "1.4.4",
+  "scope": "In-memory staging only, pre-normalized synthetic rows; excludes CSV parsing, HMAC, DQ and disk commit",
+  "seconds": {
+    "rowwise": [
+      10.495164899999509,
+      9.924534700010554,
+      9.942371599987382
+    ],
+    "json_batch": [
+      0.010560499998973683,
+      0.010887999989790842,
+      0.011057700001401827
+    ]
+  },
+  "median_seconds": {
+    "rowwise": 9.942371599987382,
+    "json_batch": 0.010887999989790842
+  },
+  "rowwise_over_json_batch_ratio": 913.1494865273576,
+  "identical_sorted_output": true,
+  "output_sha256": "5eed47916e04f4ec772f552fad16d3b038f261e80c453f0c8d6f4b9d0c5fc7da"
+}

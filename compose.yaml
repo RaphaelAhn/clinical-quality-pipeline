@@ -1,0 +1,11 @@
+services:
+  demo:
+    build: .
+    network_mode: none
+    volumes:
+      - ./evidence:/app/evidence
+    command: ["python", "demo.py", "--output", "/app/evidence/docker-demo.json"]
+  tests:
+    build: .
+    network_mode: none
+    command: ["python", "-m", "pytest", "-q", "-p", "no:cacheprovider"]

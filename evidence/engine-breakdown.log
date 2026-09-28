@@ -1,0 +1,27 @@
+﻿== engine=python (statements > 0.3 s)
+  0.35s INSERT INTO stage SELECT r.* FROM (SELECT unnest(from_json_strict(?,?)) AS r)
+  0.42s CREATE TEMP TABLE clean AS SELECT DISTINCT * FROM stage
+  0.91s INSERT INTO patient_snapshot SELECT DISTINCT batch_date,hospital,person_id,birth_year FROM
+  2.16s INSERT INTO visit_snapshot SELECT DISTINCT batch_date,hospital,visit_id,person_id,visit_da
+  1.39s INSERT INTO measurement_snapshot SELECT batch_date,hospital,measurement_id, visit_id,perso
+  0.47s SELECT count(*) FROM measurement_snapshot m LEFT JOIN visit_snapshot v ON m.batch_date=v.b
+  0.93s SELECT coalesce(sha256(string_agg(h, '' ORDER BY h)), '') FROM (SELECT sha256(t::VARCHAR) 
+  2.13s SELECT coalesce(sha256(string_agg(h, '' ORDER BY h)), '') FROM (SELECT sha256(t::VARCHAR) 
+  2.82s SELECT coalesce(sha256(string_agg(h, '' ORDER BY h)), '') FROM (SELECT sha256(t::VARCHAR) 
+  4.79s COMMIT
+total 53.5 s
+== engine=sql (statements > 0.3 s)
+  0.38s CREATE OR REPLACE TEMP TABLE raw AS SELECT row_number() OVER () + 1 AS line, * FROM read_c
+  0.88s INSERT INTO stage SELECT $day, $h, demo_token($h, 'person', patient_id), birth_year::INTEG
+  0.38s CREATE OR REPLACE TEMP TABLE raw AS SELECT row_number() OVER () + 1 AS line, * FROM read_c
+  0.85s INSERT INTO stage SELECT $day, $h, demo_token($h, 'person', patient_id), birth_year::INTEG
+  0.39s CREATE TEMP TABLE clean AS SELECT DISTINCT * FROM stage
+  0.83s INSERT INTO patient_snapshot SELECT DISTINCT batch_date,hospital,person_id,birth_year FROM
+  2.05s INSERT INTO visit_snapshot SELECT DISTINCT batch_date,hospital,visit_id,person_id,visit_da
+  1.39s INSERT INTO measurement_snapshot SELECT batch_date,hospital,measurement_id, visit_id,perso
+  0.48s SELECT count(*) FROM measurement_snapshot m LEFT JOIN visit_snapshot v ON m.batch_date=v.b
+  1.26s SELECT coalesce(sha256(string_agg(h, '' ORDER BY h)), '') FROM (SELECT sha256(t::VARCHAR) 
+  2.09s SELECT coalesce(sha256(string_agg(h, '' ORDER BY h)), '') FROM (SELECT sha256(t::VARCHAR) 
+  2.86s SELECT coalesce(sha256(string_agg(h, '' ORDER BY h)), '') FROM (SELECT sha256(t::VARCHAR) 
+  5.20s COMMIT
+total 19.9 s

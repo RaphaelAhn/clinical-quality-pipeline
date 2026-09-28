@@ -1,0 +1,92 @@
+{
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+    "duckdb": "1.4.4"
+  },
+  "scope": "Synthetic local DuckDB demo; no Docker/Airflow runtime verification",
+  "baseline": {
+    "run_id": "88224e845ede481daf0765449ff2204b",
+    "batch_date": "2026-09-25",
+    "input_rows": 2008,
+    "accepted_rows": 2000,
+    "duplicate_rows": 2,
+    "rejected_rows": 6,
+    "engine": {
+      "A": "sql",
+      "B": "sql"
+    },
+    "reject_reasons": {
+      "MISSING_FIELD": 2,
+      "INVALID_DATE": 2,
+      "UNKNOWN_UNIT": 2
+    },
+    "quarantine": [
+      {
+        "hospital": "A",
+        "line": 1003,
+        "reason": "MISSING_FIELD"
+      },
+      {
+        "hospital": "A",
+        "line": 1004,
+        "reason": "INVALID_DATE"
+      },
+      {
+        "hospital": "A",
+        "line": 1005,
+        "reason": "UNKNOWN_UNIT"
+      },
+      {
+        "hospital": "B",
+        "line": 1003,
+        "reason": "MISSING_FIELD"
+      },
+      {
+        "hospital": "B",
+        "line": 1004,
+        "reason": "INVALID_DATE"
+      },
+      {
+        "hospital": "B",
+        "line": 1005,
+        "reason": "UNKNOWN_UNIT"
+      }
+    ],
+    "orphan_rows": 0,
+    "counts": {
+      "patient_snapshot": 1000,
+      "visit_snapshot": 2000,
+      "measurement_snapshot": 2000
+    },
+    "snapshot_sha256": "932ee83be5a5b9859358633d445c8b0fcd0bb3d361b240a8bda31de47f628090",
+    "source_sha256": "370199a7512a4ea9bc5f893025839bb74fcd2686f6eb27be5b6a74007257b276",
+    "status": "COMMITTED"
+  },
+  "baseline_seconds": 0.1902,
+  "input_rows_per_second": 10554.75,
+  "same_input_same_snapshot": true,
+  "late_arrival_matches_baseline": true,
+  "rollback_preserves_snapshot": {
+    "after_delete": true,
+    "after_insert": true
+  },
+  "retry_matches_baseline": true,
+  "run_status_counts": {
+    "FAILED": 2,
+    "COMMITTED": 5
+  },
+  "great_expectations_audit": {
+    "batch_date": "2026-09-25",
+    "success": true,
+    "failed": [],
+    "measurement_snapshot": {
+      "evaluated": 13,
+      "passed": 13
+    },
+    "patient_snapshot": {
+      "evaluated": 3,
+      "passed": 3
+    }
+  }
+}

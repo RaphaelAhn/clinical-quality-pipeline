@@ -1,0 +1,50 @@
+﻿== digdag run session=2026-09-25
+[INFO] (main): Started Embulk v0.11.5
+[INFO] (main): Started Embulk v0.11.5
+Success. Task state is saved at /opt/workflow/.digdag/status/20260925T000000+0000 directory.
+== truncate 9/26 raw hospital_B (sender count file unchanged)
+== digdag run session=2026-09-26
+[INFO] (main): Started Embulk v0.11.5
+[INFO] (main): Started Embulk v0.11.5
+PipelineError: SOURCE_ROW_COUNT_MISMATCH
+[ERROR] (0026@[0:default:1:1]+clinical+publish) io.digdag.core.agent.OperatorManager: Task failed with unexpected error: Command failed with code 1
+[INFO] (0027@[0:default:1:1]+clinical^error) io.digdag.core.agent.OperatorManager: sh>: echo "ALERT clinical_daily 2026-09-26 failed - Command failed with code 1 (runtime)" >> /data/alerts.log
+error: 
+== sender re-sends 9/26
+== digdag run session=2026-09-26
+[INFO] (main): Started Embulk v0.11.5
+[INFO] (main): Started Embulk v0.11.5
+Success. Task state is saved at /opt/workflow/.digdag/status/20260926T000000+0000 directory.
+== digdag run session=2026-09-25
+[INFO] (main): Started Embulk v0.11.5
+[INFO] (main): Started Embulk v0.11.5
+Success. Task state is saved at /opt/workflow/.digdag/status/20260925T000000+0000 directory.
+== alerts.log
+ALERT clinical_daily 2026-09-26 failed - Command failed with code 1 (runtime)
+== pipeline runs table (batch_date, status, error_code, snapshot_sha256)
+[
+ [
+  "2026-09-25",
+  "COMMITTED",
+  null,
+  "f54c6426528fd46ed099fe5563cb25d88fed540963ada97dbaad647aff6b683d"
+ ],
+ [
+  "2026-09-26",
+  "FAILED",
+  "SOURCE_ROW_COUNT_MISMATCH",
+  null
+ ],
+ [
+  "2026-09-26",
+  "COMMITTED",
+  null,
+  "f8100a4887214324b3e49313992f134125b8e95dfb61adff041d9fbe2eeb21ef"
+ ],
+ [
+  "2026-09-25",
+  "COMMITTED",
+  null,
+  "f54c6426528fd46ed099fe5563cb25d88fed540963ada97dbaad647aff6b683d"
+ ]
+]
