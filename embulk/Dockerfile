@@ -5,4 +5,5 @@ RUN useradd --create-home --uid 10001 runner && chmod 644 /opt/embulk.jar
 COPY *.yml /opt/configs/
 USER runner
 WORKDIR /data
-ENTRYPOINT ["java", "-jar", "/opt/embulk.jar", "run"]
+# user.home comes from passwd, not HOME; a --user uid without a passwd entry breaks Embulk.
+ENTRYPOINT ["java", "-Duser.home=/tmp", "-jar", "/opt/embulk.jar", "run"]

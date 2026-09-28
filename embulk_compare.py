@@ -8,6 +8,7 @@ import json
 import os
 import shutil
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 from time import perf_counter
@@ -24,11 +25,13 @@ def embulk_land(raw: Path, landing: Path) -> dict:
     for hospital in HOSPITALS:
         start = perf_counter()
         # On Linux the container must write landing/ as the host user; Docker Desktop maps ownership itself.
-        user = ["--user", f"{os.getuid()}:{os.getgid()}", "-e", "HOME=/tmp"] if hasattr(os, "getuid") else []
-        subprocess.run(["docker", "run", "--rm", "--network", "none", *user,
-                        "-v", f"{raw.resolve()}:/data/raw:ro", "-v", f"{landing.resolve()}:/data/landing",
-                        IMAGE, f"/opt/configs/hospital_{hospital}.yml"],
-                       check=True, capture_output=True)
+        user = ["--user", f"{os.getuid()}:{os.getgid()}"] if hasattr(os, "getuid") else []
+        run = subprocess.run(["docker", "run", "--rm", "--network", "none", *user,
+                              "-v", f"{raw.resolve()}:/data/raw:ro", "-v", f"{landing.resolve()}:/data/landing",
+                              IMAGE, f"/opt/configs/hospital_{hospital}.yml"],
+                             capture_output=True)
+        if run.returncode:
+            sys.exit((run.stdout + run.stderr).decode(errors="replace")[-3000:])
         seconds[hospital] = round(perf_counter() - start, 2)
         # The sender's control file travels beside the data; Embulk only lands the CSV.
         shutil.copyfile(raw / f"hospital_{hospital}.rows", landing / f"hospital_{hospital}.rows")
